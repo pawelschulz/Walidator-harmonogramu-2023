@@ -1,0 +1,15 @@
+C:\Users\hp\Desktop\Walidator\obj\Debug\net6.0\Walidator.csproj.AssemblyReference.cache
+C:\Users\hp\Desktop\Walidator\obj\Debug\net6.0\Walidator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hp\Desktop\Walidator\obj\Debug\net6.0\Walidator.AssemblyInfoInputs.cache
+C:\Users\hp\Desktop\Walidator\obj\Debug\net6.0\Walidator.AssemblyInfo.cs
+C:\Users\hp\Desktop\Walidator\obj\Debug\net6.0\Walidator.csproj.CoreCompileInputs.cache
+C:\Users\hp\Desktop\Walidator\bin\Debug\net6.0\Walidator.exe
+C:\Users\hp\Desktop\Walidator\bin\Debug\net6.0\Walidator.deps.json
+C:\Users\hp\Desktop\Walidator\bin\Debug\net6.0\Walidator.runtimeconfig.json
+C:\Users\hp\Desktop\Walidator\bin\Debug\net6.0\Walidator.dll
+C:\Users\hp\Desktop\Walidator\bin\Debug\net6.0\Walidator.pdb
+C:\Users\hp\Desktop\Walidator\obj\Debug\net6.0\Walidator.dll
+C:\Users\hp\Desktop\Walidator\obj\Debug\net6.0\refint\Walidator.dll
+C:\Users\hp\Desktop\Walidator\obj\Debug\net6.0\Walidator.pdb
+C:\Users\hp\Desktop\Walidator\obj\Debug\net6.0\Walidator.genruntimeconfig.cache
+C:\Users\hp\Desktop\Walidator\obj\Debug\net6.0\ref\Walidator.dll
