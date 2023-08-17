@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,7 +31,7 @@ namespace Walidator
                 daynew.week = dayofweek(firstday, i); 
                 daynew.working = (daynew.week >= 1 && daynew.week <=5) ? true : false;
                 daynew.normal_hours = (daynew.hours <= 8) ? daynew.hours : 8;
-                daynew.over_hours = (daynew.hours <= 8) ? 0 : daynew.hours-8;
+                daynew.over_hours = overhours(daynew);
                 daynew.timebetween = 24 - daynew.hours;
                 listofdays.Add(daynew);
                 i++;
@@ -42,6 +42,20 @@ namespace Walidator
                 }
             }
             return listofdays;
+        }
+
+        private static int overhours(Day dayn)
+        {
+            if(dayn.hours > 8 && (dayn.week >= 1 && dayn.week <= 6))
+            {
+                return dayn.hours - 8;
+            }
+            else if(dayn.week == 7 || dayn.week == 0)
+            {
+                return dayn.hours;
+            }
+            else
+                return 0;
         }
 
         public static int dayofweek(int firstday, int i)
