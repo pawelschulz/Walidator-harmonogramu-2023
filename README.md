@@ -34,5 +34,4 @@ Program poddany został testom jednostkowym:
 - w pliku "harm10.in" usunięto w jednym miejscu liczbę godzin.
 W powyższych sytuacjach program się zapętla (pierwsze dwa punkty) lub wstrzymuje działanie, informując użytkownika o napotkanym problemie/wyjątku.
 
-
-
+Można łatwo wczytać projekt z pliku "Walidator.csproj" z pomocą VS22.
