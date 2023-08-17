@@ -23,6 +23,7 @@ Program poddany został testom jednostkowym:
 - wprowadzono błędne dane dot. roku: "abcd", 2057, 1000,
 - wprowadzono błędne dane dot. miesiąca: "abcd", -1, 15,
 - wprowadzono nazwę nieistniejącego pliku,
+- plik "harm1.in" był edytowany pod kątem testów: występowania prac w niedziele, zliczania nadgodzin, sumowania czasu pracy, czasu odpoczynku,
 - w pliku "harm2.in" ustawiono czas ujemny i dłuższy niż 16h (nazwę pliku zmieniałem w kodzie, pliki umiłem w katalogu: bin/Debug/net6.0),
 - w pliku "harm3.in" pozostawiono pustą linijkę,
 - w pliku "harm4.in" powtórzono nr dnia w miesiącu,
