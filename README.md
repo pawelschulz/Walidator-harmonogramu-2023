@@ -14,9 +14,9 @@ Program składa się z 2 klas (położonych w osobnych plikach: Program.cs i Day
   
 Oprócz warunków z treści zadania, na potrzeby realizacji programu przyjąłem, że:
 - rok przyjmie wartość 1950-2050,
-- dni pracujące są w zakresie pn-pt ( dot. 1) ),
-- czas rozpoczęcia każdego dnia pracy to godzina 8:00 ( dot. 4) ),
-- pracownik nie może pracować więcej niż 16h dziennie ( dot. 4) ).
+- dni pracujące są w zakresie pn-pt (dot. 1.),
+- czas rozpoczęcia każdego dnia pracy to godzina 8:00 (4.),
+- pracownik nie może pracować więcej niż 16h dziennie (4.).
 
 Program poddany został testom jednostkowym:
 - wprowadzono błędne dane dot. roku: "abcd", 2057, 1000,
