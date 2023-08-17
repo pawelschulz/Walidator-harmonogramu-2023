@@ -1,4 +1,4 @@
-﻿using static System.Net.Mime.MediaTypeNames;
+using static System.Net.Mime.MediaTypeNames;
 using System.IO;
 using System.Globalization;
 
@@ -10,12 +10,18 @@ namespace Walidator
         {
 
             Console.WriteLine("To jest walidator harmonogramu czasu pracy.");
-            Console.WriteLine("Dla pierwszego dnia w miesiącu podaj jego nr porządkowy w tygodniu (pn=1, ..., nd=7):");
-            int firstday = int.Parse(Console.ReadLine());
+            Console.WriteLine("Podaj rok w formacie YYYY:");
+            int year = int.Parse(Console.ReadLine());
+            Console.WriteLine("Podaj miesiąc w formacie MM:");
+            int month = int.Parse(Console.ReadLine());
+            DateTime date = new DateTime(year, month, 1);
+            string dayName = date.ToString("dddd", new CultureInfo("en-US")); // "en-US" dla angielskiego języka
+            DayOfWeek dayOfWeek = (DayOfWeek)Enum.Parse(typeof(DayOfWeek), dayName);
+            int dayNumber = (int)dayOfWeek;
 
             StreamReader sr = new StreamReader("harm.in");
             int n = new StreamReader("harm.in").ReadToEnd().Split(new char[] { '\n' }).Length;
-            List<Day> ListOfDays = Day.WriteDays(sr, n, firstday);
+            List<Day> ListOfDays = Day.WriteDays(sr, n, dayNumber);
             Console.WriteLine("-----------------------------------------------------------------------");
             Console.WriteLine("Z pliku harm.in wczytałem następujące dane: ");
             Console.WriteLine($"Liczba dni w miesiącu: {n}");
@@ -80,7 +86,7 @@ namespace Walidator
             int working_sunday = 0;
             foreach (var day in listOfDays)
             {
-                if (day.week == 7 && day.hours != 0)
+                if ((day.week == 7 || day.week==0) && day.hours != 0)
                     return "tak";
             }
             return "nie";
