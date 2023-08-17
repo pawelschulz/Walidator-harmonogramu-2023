@@ -23,8 +23,8 @@ namespace Walidator
             List<Day> ListOfDays = null;
             try
             {
-                StreamReader sr = new StreamReader("harm2.in");
-                n = new StreamReader("harm2.in").ReadToEnd().Split(new char[] { '\n' }).Length; // zliczenie linijek pliku
+                StreamReader sr = new StreamReader("harm1.in");
+                n = new StreamReader("harm1.in").ReadToEnd().Split(new char[] { '\n' }).Length; // zliczenie linijek pliku
                 ListOfDays = Day.WriteDays(sr, n, firstday, daysinmonth); 
             }
             catch (Exception ex)
