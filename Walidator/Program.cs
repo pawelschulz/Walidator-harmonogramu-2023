@@ -26,15 +26,8 @@ namespace Walidator
             {
                 Console.WriteLine($"BŁĄD WCZYTANIA PLIKU: {ex.Message}");
             }
-        
-            // wyrzucenie na ekran danych dla sprawdzenia poprawności, potrzebne do testów jednostkowych..
-            Console.WriteLine("-----------------------------------------------------------------------");
-            Console.WriteLine("Z pliku harm.in wczytałem następujące dane: ");
-            Console.WriteLine($"Liczba dni w miesiącu: {n}");
-            for (int i = 0; i < n; i++)
-            {
-                Console.WriteLine($"=> dzień miesiąca: {ListOfDays[i].month}, dzień tygodnia: {ListOfDays[i].whatday()}, czy pracujący: {ListOfDays[i].working()}, liczba przepracowanych godzin: {ListOfDays[i].hours}, liczba godzin: {ListOfDays[i].normal_hours()}, liczba nadgodzin: {ListOfDays[i].over_hours()}, czas odpoczynku: {ListOfDays[i].timebetween()}.");
-            }
+
+            Day.testy(ListOfDays, n);
             
             // wyrzucenie na ekran wyników walidacji
             Console.WriteLine("-----------------------------------------------------------------------");
