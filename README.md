@@ -6,7 +6,7 @@ Program "Walidator" na podstawie pliku źródłowego (w formacie: dzień miesią
 3) Ile godzin nadgodzin?
 4) Czy pomiędzy końcem jednego dnia, a początkiem następnego jest co najmniej 11h przerwy?
 
-Napisałem go obiektowo w języku C#, korzystając z Visual Studio 2022. Jako plik źródłowy przyjąłem plik "harm1.in"
+Napisałem go obiektowo w języku C#, korzystając z Visual Studio 2022. Jako plik źródłowy przyjąłem plik "harm1.in".
 
 Program składa się z 2 klas (położonych w osobnych plikach: Program.cs i Day.cs):
 - Program: zawiera metodę Main(), listę dni (ListOfDays), wczytuje dane z pliku i wywołuje potrzebne metody z klasy Day;
@@ -29,7 +29,7 @@ Program poddany został testom jednostkowym:
 - w pliku "harm5.in" zmieniono koljność numerów dni w miesiącu,
 - w pliku "harm6.in" liczba dni w miesiącu < 28,
 - w pliku "harm7.in" liczba dni w miesiącu > 31,
-- w pliku "harm8.in" liczba dni w miesiącu 31 (sprawdzone dla miesiąca liczącego 31 dni)
+- w pliku "harm8.in" liczba dni w miesiącu 31 (sprawdzone dla miesiąca liczącego 31 dni),
 - w pliku "harm9.in" usunięto jeden z nr dni,
 - w pliku "harm10.in" usunięto w jednym miejscu liczbę godzin.
 W powyższych sytuacjach program się zapętla (pierwsze dwa punkty) lub wstrzymuje działanie, informując użytkownika o napotkanym problemie/wyjątku.
