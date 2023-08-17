@@ -62,7 +62,7 @@ namespace Walidator
 
             List<Day> listofdays = new List<Day>(); // utworzenie listy dni w miesiącu
             int i = 0;
-            while(i<=n)
+            while(i<n)
             {
                 Day daynew = new Day(); // utworzenie nowego dnia (obiektu Day)
                 daynew.month = int.Parse(table[0]); // przypisanie numeru w miesiącu, konwersja na int
@@ -92,8 +92,7 @@ namespace Walidator
             value += sequencetest(listofdays);
             value += negativehours(listofdays);
             value += daynumber(listofdays, daysinmonth);
-            return (value == 0) ? true : false; // jeśli gdziekolwiek wyjdzie błąd, tj. value>=1, program wyrzuci wyjątek
-            
+            return (value == 0) ? false : true; // jeśli gdziekolwiek wyjdzie błąd, tj. value>=1, program wyrzuci wyjątek 
         }
 
         private static int sequencetest(List<Day> listofdays) // sprawdzenie, czy nr dni w miesiącu są kolejne
@@ -101,7 +100,7 @@ namespace Walidator
             int maxLength = listofdays.Count;
             for (int i = 0; i < maxLength; i++)
             {
-                if (listofdays[i].month != i)
+                if (listofdays[i].month != i+1) // i+1, bo miesiące 1-31, a tabllice 0-30
                 {
                     return 1;
                 }
