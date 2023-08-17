@@ -11,16 +11,21 @@ namespace Walidator
             Console.WriteLine("To jest walidator harmonogramu czasu pracy.");
 
             // wczytanie od użytkownika potrzebnych informacji - roku i miesiąca (z zabezpieczeniem)
-            int firstday = Day.read_year_month(); 
+            int year = Day.readfromconsole("rok", "YYYY", 1950, 2050);
+            int month = Day.readfromconsole("miesiąc", "MM", 1, 12);
+
+            // określenie danych na podstawie kalendarza
+            int firstday = Day.read_year_month(year, month, true); // potrzebny pierwszy dzień miesiąca - by określić kolejne dni
+            int daysinmonth = Day.read_year_month(year, month, false); // potrzebna liczba dni w miesiącu, by sprawdzić plik
 
             // wczytanie danych z pliku
             int n = 0;
             List<Day> ListOfDays = null;
             try
             {
-                StreamReader sr = new StreamReader("harm.in");
-                n = new StreamReader("harm.in").ReadToEnd().Split(new char[] { '\n' }).Length; // zliczenie linijek pliku
-                ListOfDays = Day.WriteDays(sr, n, firstday); 
+                StreamReader sr = new StreamReader("harm1.in");
+                n = new StreamReader("harm1.in").ReadToEnd().Split(new char[] { '\n' }).Length; // zliczenie linijek pliku
+                ListOfDays = Day.WriteDays(sr, n, firstday, daysinmonth); 
             }
             catch (Exception ex)
             {
