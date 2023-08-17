@@ -13,20 +13,23 @@ namespace Walidator
         public int week; // numer dnia w tygodniu
         public int hours; // liczba przepracownych godzin
 
-        public static int read_year_month()
+        public static int read_year_month(int year, int month, bool flag)
         {
-            int year = readfromconsole("rok", "YYYY", 1950, 2050);
-            int month = readfromconsole("miesiąc", "MM", 1, 12);
-
-            // znalezienie dla pierwszego dnia w miesiącu jego numeru tygodniowego (0-nd, ..., 6-sb)
-            DateTime date = new DateTime(year, month, 1); // utworzenie daty w formacie typu {01.05.2023 00:00:00}
-            string dayName = date.ToString("dddd", new CultureInfo("en-US")); // zwrócenie nazwy dnia typu string "Monday"
-            DayOfWeek dayOfWeek = (DayOfWeek)Enum.Parse(typeof(DayOfWeek), dayName); // nazwy dnia tygodnia na typ wyliczeniowy 'DayOfWeek'
-            int dayNumber = (int)dayOfWeek; // jawna konwersja nazwy dnia na typ int
-            return dayNumber;
+            if (flag) // flaga, by nie dublować f-cji
+            {
+                // znalezienie dla pierwszego dnia w miesiącu jego numeru tygodniowego (0-nd, ..., 6-sb)
+                DateTime date = new DateTime(year, month, 1); // utworzenie daty w formacie typu {01.05.2023 00:00:00}
+                string dayName = date.ToString("dddd", new CultureInfo("en-US")); // zwrócenie nazwy dnia typu string "Monday"
+                DayOfWeek dayOfWeek = (DayOfWeek)Enum.Parse(typeof(DayOfWeek), dayName); // nazwy dnia tygodnia na typ wyliczeniowy 'DayOfWeek'
+                int dayNumber = (int)dayOfWeek; // jawna konwersja nazwy dnia na typ int
+                return dayNumber;
+            }
+            else
+                return DateTime.DaysInMonth(year, month); 
+            
         }
 
-        private static int readfromconsole(string v, string w, int start, int end)
+        public static int readfromconsole(string v, string w, int start, int end)
         {
             int number;
             while (true)
@@ -52,7 +55,7 @@ namespace Walidator
             }
         }
 
-        public static List<Day> WriteDays(StreamReader sr, int n, int firstday)
+        public static List<Day> WriteDays(StreamReader sr, int n, int firstday, int daysinmonth)
         {
             string line = sr.ReadLine(); // odczyt linii z pliku
             string[] table = line.Split(", "); // podział linii po przecinku, zapis do tabeli
@@ -73,7 +76,58 @@ namespace Walidator
                     table = line.Split(", ");
                 }
             }
+
+            if(testproperity(listofdays, daysinmonth))
+            {
+                Console.WriteLine("BŁĄD DANYCH PLIKU.");
+                Environment.FailFast("Program przerwany.");
+            }
+
             return listofdays;
+        }
+
+        private static bool testproperity(List<Day> listofdays, int daysinmonth) // test zgodności danych z pliku
+        {
+            int value = 0;
+            value += sequencetest(listofdays);
+            value += negativehours(listofdays);
+            value += daynumber(listofdays, daysinmonth);
+            return (value == 0) ? true : false; // jeśli gdziekolwiek wyjdzie błąd, tj. value>=1, program wyrzuci wyjątek
+            
+        }
+
+        private static int sequencetest(List<Day> listofdays) // sprawdzenie, czy nr dni w miesiącu są kolejne
+        {
+            int maxLength = listofdays.Count;
+            for (int i = 0; i < maxLength; i++)
+            {
+                if (listofdays[i].month != i)
+                {
+                    return 1;
+                }
+            }
+            return 0;
+        }
+
+        private static int negativehours(List<Day> listofdays) // sprawdzenie, czy liczba przepracowanych godzin mieści się w widełkach
+        {
+            int maxLength = listofdays.Count;
+            for (int i = 0; i < maxLength; i++)
+            {
+                if (listofdays[i].hours < 0 || listofdays[i].hours > 16)
+                {
+                    return 1;
+                }
+            }
+            return 0;
+        }
+
+        private static int daynumber(List<Day> listofdays, int daysinmonth) // sprawdzenie, czy liczba dni odpowiada podanemu miesiącowi
+        {
+            if (listofdays.Count != daysinmonth)
+                return 1;
+            else
+                return 0;
         }
 
         public static void testy(List<Day>? list, int n)
@@ -145,7 +199,7 @@ namespace Walidator
 
 
 
-
+        // WALIDACJE
         public static string overtime_month(List<Day> listOfDays)
         {
             int working_day = 0;
